@@ -1,0 +1,4 @@
+Flask
+python-dotenv
+
+git+https://github.com/daxiom/flask-pub.git@0.0.1
