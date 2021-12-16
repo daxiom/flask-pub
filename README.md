@@ -12,7 +12,7 @@ class Config:
     Used as the base for all the other configurations.
     """
 
-    FLASK_PUB_CONFIG={'plugins':['gcp': 'gcp-pub-sub'},]}
+    FLASK_PUB_CONFIG={'plugins':[{'gcp': 'gcp-pub-sub'},]}
     FLASK_PUB_DEFAULT_SUBJECT='projects/project-id/topics/my-topic'
 ```
 
