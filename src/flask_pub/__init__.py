@@ -1,5 +1,5 @@
 import json
-from typing import Final
+from typing import Final, Union
 
 from flask import _app_ctx_stack
 from flask import current_app
@@ -76,7 +76,7 @@ class FlaskPub:
 
             return response_or_exc
     
-    def publish(self, msg: str, subject: str = None):
+    def publish(self, msg: Union[str, bytes], subject: str = None):
 
         if not (app := self.app):
                 app = current_app
@@ -84,6 +84,11 @@ class FlaskPub:
         topic_name = subject or app.config.get('FLASK_PUB_DEFAULT_SUBJECT')
         
         if app and topic_name and (state := get_state(app)):
+
+            data = msg
+            if isinstance(msg, str):
+                data = msg.encode("utf8")
+            
             state.publisher.driver.publish(
-                topic=topic_name, data=msg.encode("utf8")
+                topic=topic_name, data=data
                 )
