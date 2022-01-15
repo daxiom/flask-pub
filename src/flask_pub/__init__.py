@@ -5,7 +5,7 @@ from flask import _app_ctx_stack
 from flask import current_app
 from google.cloud import pubsub
 
-__version__ = '0.0.1'
+__version__ = '0.0.4'
 
 EXTENSION_NAME: Final = 'FLASK_REGISTRY_PUBSUB'
 
